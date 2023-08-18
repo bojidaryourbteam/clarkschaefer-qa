@@ -1,0 +1,27 @@
+.row_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  grid-column-start: auto;
+  margin-top: 10px;
+
+  @include media($medium) {
+    grid-template-columns: repeat(2, max-content);
+    gap: 40px;
+    margin-top: 70px;
+  }
+}
+
+
+.text_only_large_heading {
+  padding-left: 120px;
+  display: flex;
+  gap: 138px;
+  flex-direction: row;
+
+  @include media($medium,down) {
+    padding-left: 30px;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

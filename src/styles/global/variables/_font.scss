@@ -1,0 +1,17 @@
+$font: (
+  '--font-fallback': 'sans-serif',
+  '--font-headline': (
+    'Roboto',
+    var(--font-fallback),
+  ),
+  '--font-family-base': (
+    'proxima-nova',
+    var(--font-fallback),
+  ),
+  '--font-size-base': 16px,
+  '--font-weight-light': 300,
+  '--font-weight-regular': 400,
+  '--font-weight-medium': 500,
+  '--font-weight-semibold': 600,
+  '--font-weight-bold': 700,
+);
