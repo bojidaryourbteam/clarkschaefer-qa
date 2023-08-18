@@ -1,0 +1,136 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid var(--color-black);
+  min-width: 0;
+  border: none;
+  overflow: hidden;
+
+  &_img {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    width: 137px;
+    height: 190px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 40% 40%;
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+
+    @include media($medium) {
+      margin-top: 0px;
+      width: 258px;
+      height: 339px;
+    }
+    @include media($small, down) {
+      margin-top: 0px;
+      width: 137px;
+      height: 190px;
+    }
+  }
+
+  &_heading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    font-size: 24px;
+    line-height: 18px;
+    margin: 32px 0 6px -20px;
+
+    @include media($medium, down) {
+      width: 140px;
+      margin-right: -13px;
+      font-size: 16px;
+    }
+
+    @include media($small, down) {
+      margin-right: -13px;
+    }
+  }
+
+  &_icon_phone {
+    &::after {
+      content: url(../../../../../public/images/icons/icon-phone-experts.svg);
+    }
+  }
+  &_icon_email {
+    &::after {
+      content: url(../../../../../public/images/icons/icon-mail-experts.svg);
+    }
+  }
+  &_icon_linkedin {
+    &::after {
+      content: url(../../../../../public/images/icons/icon-linkedin-experts.svg);
+    }
+  }
+
+  &_subheading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-light-blue);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 15.4px;
+    margin-left: -20px;
+
+    @include media($medium, down) {
+      margin-top: 8px;
+    }
+  }
+
+  &_border {
+    width: 48px;
+    height: 1px;
+    background-color: var(--color-gold);
+    margin: 23px 20px 22px 0px;
+
+    @include media($medium, down) {
+      display: none;
+    }
+  }
+
+  &_services {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-light-blue);
+    font-size: 14px;
+    margin-bottom: 30px;
+
+    @include media($medium, down) {
+      display: none;
+    }
+
+    & > div {
+      margin-bottom: 12px;
+    }
+  }
+
+  &_contacts {
+    margin-top: -20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 135px;
+
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      color: var(--color-gold);
+    }
+
+    @include media($medium, down) {
+      margin-top: 30px;
+    }
+  }
+}

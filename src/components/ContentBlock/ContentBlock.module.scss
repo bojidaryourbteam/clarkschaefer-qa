@@ -1,0 +1,58 @@
+.content_block__container {
+
+  max-width: 1090px;
+  height: 330px;
+  color: var(--color-white);
+  margin-left: 165px;
+  margin-right: 165px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  .textAlign__right {
+    text-align: right;
+  }
+
+  .textAlign__left {
+    text-align: left;
+  }
+
+  .textAlign__center {
+    text-align: center;
+  }
+
+  @include media($medium, down) {
+    margin: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 100%;
+    gap: 0px;
+  }
+
+  h2 {
+    padding-top: 10px;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 115%;
+
+    @include media($medium, down) {
+      font-size: 30px;
+    }
+  }
+
+  p {
+    padding-top: 25px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 115%;
+
+    @include media($medium, down) {
+      font-size: 20px;
+      padding-top: 0px;
+    }
+  }
+}

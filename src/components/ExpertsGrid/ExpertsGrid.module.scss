@@ -1,0 +1,288 @@
+.container_filters {
+  color: var(--color-white);
+  position: absolute;
+  margin-top: -25px;
+  left: 50.5%;
+  z-index: 10;
+
+  @include media($medium, down) {
+    position: inherit;
+  }
+
+  > div {
+    font-size: 24px;
+    font-family: Roboto;
+    font-weight: 300;
+    line-height: 115%;
+  }
+
+  .checkbox__wrapper {
+    width: 305px;
+    margin-top: 2px;
+    margin-left: 245px;
+    font-size: 16px;
+    padding: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    list-style: none;
+    border-radius: 12px;
+    background-color: var(--color-white);
+    color: var(--color-dark-denim);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.15);
+
+    .separator {
+      border-top: 2px dashed var(--color-day-flower);
+      padding-top: 10px;
+    }
+
+    > & li + li {
+      margin-top: 20px;
+      margin-bottom: 4px;
+    }
+
+    & > li {
+      display: flex;
+      align-items: center;
+
+      & > input {
+        width: 24px;
+        height: 24px;
+      }
+
+      & > label {
+        margin-left: 4px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .checkbox_container {
+    cursor: pointer;
+    position: relative;
+    line-height: 2;
+    display: flex;
+
+    > input {
+      position: absolute;
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+
+    > span {
+      margin-right: 10px;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #38a4dd;
+      display: block;
+      position: relative;
+      border-radius: 5px;
+    }
+
+    > input:checked ~ span:after {
+      content: '';
+      display: block;
+      position: relative;
+      left: 40%;
+      top: 3px;
+      width: 6px;
+      height: 12px;
+      font-weight: 100;
+      border: solid #045388;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .search__wrapper {
+    position: relative;
+    width: 278px;
+    margin-right: 30px;
+    height: 48px;
+  }
+
+  .search__input {
+    width: 278px;
+    height: 100%;
+    padding-left: 8px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--color-dark-denim);
+    border: none;
+
+    &::placeholder {
+      color: var(--color-dark-denim);
+    }
+
+    &:active {
+      border: none;
+    }
+  }
+
+  .search__icon {
+    content: url(../../../public/images/icons/icon-lends-experts.svg);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 245px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+.filters__logo {
+  max-width: 550px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include media($medium, down) {
+    display: block;
+  }
+}
+
+.filters__logo * span {
+  width: 20px;
+  height: 20px;
+  padding: 0px 6px;
+  background-color: var(--color-gold);
+}
+
+.filter-icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 50%;
+  left: 240px;
+  transform: translateY(-50%);
+}
+
+.container {
+  position: relative;
+  width: 1400px;
+  padding-left: 140px;
+  overflow: hidden;
+  margin-left: 30px;
+  margin-top: 70px;
+
+  @include media($medium, down) {
+    width: 100%;
+    margin-left: 0px;
+    padding-left: 20px;
+    margin-top: 54px;
+  }
+
+  & > span {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 19px;
+    color: var(--color-miami-marmalade);
+
+    &::before {
+      content: '';
+      width: 5px;
+      height: 20px;
+      position: absolute;
+      left: -20px;
+      background: linear-gradient(180deg, var(--color-cyan-sky) 0%, var(--color-day-flower) 100%);
+      border-radius: 50px;
+      transform: rotate(-90deg);
+
+      @include media($medium) {
+        margin-left: -5px;
+        width: 10px;
+        height: 41px;
+        top: -10px;
+        left: -39px;
+      }
+    }
+  }
+
+  .button__find {
+    color: var(--color-white);
+    position: absolute;
+    left: 67%;
+    top: 0%;
+
+    @include media($medium, down) {
+      position: relative;
+      left: 0%;
+      top: 24px;
+      padding-bottom: 32px;
+    }
+
+    &__contact {
+      color: var(--color-white);
+      position: relative;
+      left: 63%;
+      margin-top: -18px;
+
+      @include media($medium, down) {
+        position: relative;
+        left: 0%;
+        top: 24px;
+        margin-top: 0px;
+        padding-bottom: 32px;
+      }
+    }
+  }
+
+  .filter_img {
+    width: 20px;
+    height: 20px;
+    margin: 0 6px 0 6px;
+  }
+
+  .grid__wrapper {
+    margin-top: 37px;
+    @include media($medium, down) {
+    }
+  }
+
+  .grid__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 60px 0px;
+    justify-items: center;
+    margin-bottom: 35px;
+    margin-right: 150px;
+    color: var(--color-white);
+
+    @include media($smallest, down) {
+      grid-template-columns: repeat(2, 1fr);
+      margin-right: 25px;
+    }
+
+    @include media($small, down) {
+      grid-template-columns: repeat(2, 1fr);
+      margin-right: 25px;
+    }
+
+    @include media($medium, down) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button__see_more {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &::after {
+      margin-left: 12px;
+      content: url(../../../public/images/icons/icon-button-plus.svg);
+    }
+  }
+}

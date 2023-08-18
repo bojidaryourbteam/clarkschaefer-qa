@@ -1,0 +1,279 @@
+.container {
+  position: relative;
+  max-width: 1400px;
+  padding-left: 140px;
+  // overflow: hidden;
+  margin-left: 30px;
+  margin-top: 70px;
+
+  @include media($medium, down) {
+    width: 100%;
+    margin-left: 0px;
+    padding-left: 20px;
+    margin-top: 48px;
+  }
+
+  @include media($small, down) {
+    width: 100%;
+    padding-left: 0px;
+  }
+
+  & > span {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 19px;
+    color: var(--color-miami-marmalade);
+
+    @include media($small, down) {
+      padding-left: 28px;
+      font-size: 14px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 40px;
+      top: -12px;
+      left: -40px;
+      background: linear-gradient(180deg, var(--color-cyan-sky) 0%, var(--color-day-flower) 100%);
+      border-radius: 50px;
+      transform: rotate(-90deg);
+
+      @include media($medium, down) {
+        margin-left: -5px;
+        width: 5px;
+        height: 72px;
+        top: -27px;
+        left: -14px;
+      }
+    }
+  }
+
+  .carousel_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-right: 175px;
+
+    @include media($medium, down) {
+      padding-right: 0px;
+    }
+    @include media($small, down) {
+      padding-right: 0px;
+    }
+    @include media($smallest, down) {
+      padding-right: 0px;
+    }
+  }
+
+  .carousel__wrapper {
+    position: relative;
+    width: 1105px;
+
+    @include media($medium, down) {
+      max-width: 600px;
+    }
+    @include media($small, down) {
+      max-width: 450px;
+    }
+    @include media($smallest, down) {
+      max-width: 375px;
+    }
+  }
+
+  .embla {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    &__container {
+      display: flex;
+    }
+
+    &__slide {
+      position: relative;
+      flex: 0 0 auto;
+      width: calc((100% - 0rem) / 4); // Adjust here for desktop
+      height: 430px;
+      margin-bottom: 10px;
+
+      @include media($medium, down) {
+        margin-right: 10px;
+        width: calc((100% - 1rem) / 4); // Adjust here for mobile
+        height: 400px;
+      }
+      @include media($small, down) {
+        margin-right: 10;
+        width: calc((100% - 1rem) / 3); // Adjust here for mobile
+        height: 260px;
+      }
+      @include media($smallest, down) {
+        margin-right: 0;
+        width: calc((100% - 2rem) / 2); // Adjust here for mobile
+        height: 260px;
+      }
+    }
+  }
+
+  .experts_header {
+    margin-top: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+
+    @include media($medium, down) {
+      margin-top: 0px;
+    }
+  }
+
+  .experts_title {
+    font-weight: 300;
+    font-size: 48px;
+    color: var(--color-off-white);
+
+    @include media($medium, down) {
+      font-size: 24px;
+      padding-left: 32px;
+      padding-top: 20px;
+    }
+  }
+
+  .experts_dropdown_options {
+    font-size: 32px;
+
+    @include media($medium, down) {
+      font-size: 16px;
+    }
+  }
+
+  .experts_dropdown {
+    width: 107%;
+    border: none;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 50px;
+    background-color: var(--color-subnautical);
+    color: var(--color-off-white);
+    appearance: none;
+    background-image: url(../../../public/images/icons/icon-down-vector.svg);
+    background-repeat: no-repeat;
+    background-position: right 0.15em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+    border-bottom: 1px solid var(--color-gold);
+    padding-bottom: 10px;
+
+    @include media($medium, down) {
+      width: 85%;
+      font-size: 24px;
+      line-height: 105%;
+      margin-left: 30px;
+      border-bottom: 1px solid var(--color-gold);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: none;
+    }
+
+    &_slug {
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 50px;
+      background-color: var(--color-subnautical);
+      text-transform: capitalize;
+      background-color: var(--color-subnautical);
+      color: var(--color-off-white);
+    }
+  }
+
+  .button__find {
+    position: absolute;
+    left: 79.7%;
+    top: 17%;
+
+    &::after {
+      content: url(/_next/static/media/icons-arrow-right.ee027594.svg);
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: -50%;
+      transform: translate(50%, 57%);
+      filter: brightness(0) saturate(100%) invert(100%) sepia(0%);
+    }
+
+    @include media($medium, down) {
+      left: 215px;
+      top: 0%;
+    }
+  }
+
+  .card_decoration {
+    position: absolute;
+    top: 56.5%; // position it vertically in the middle
+    left: 48%; // position it horizontally in the middle
+    transform: translate(-50%, -50%); // this is necessary to truly center the div
+    z-index: -1; // this puts the div in the background
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../public/images/hero--img-vr-decoration.png');
+    background-repeat: repeat-x; // This will repeat the image only horizontally
+    background-size: contain; // This scales the image to fit the width, with the height changing proportionally
+    height: 127px; // This keeps the height at 127px
+    width: 100vw;
+    background-position: center; // ensures the background image is centered
+
+    @include media($medium, down) {
+      top: 50%;
+      height: 16%;
+      width: 102%;
+    }
+
+    @include media($small, down) {
+      top: 60%;
+      height: 19%;
+      width: 102%;
+    }
+    @include media($smallest, down) {
+      top: 60%;
+      height: 25%;
+      width: 102%;
+    }
+  }
+}
+
+.button_prev {
+  transform: rotate(180deg);
+  position: absolute;
+  left: 50px;
+  bottom: 233px;
+  z-index: 999;
+
+  @include media($medium, down) {
+    margin-top: -20px;
+    right: calc(93% - 5px);
+  }
+
+  @include media($small, down) {
+    margin-top: -20px;
+    right: calc(94% - 5px);
+  }
+}
+
+.button_next {
+  position: absolute;
+  right: 57px;
+  bottom: 326px;
+  z-index: 999;
+  @include media($medium, down) {
+    margin-top: -20px;
+    left: 92%;
+  }
+
+  @include media($small, down) {
+    margin-top: -20px;
+    right: calc(94% - 5px);
+  }
+}

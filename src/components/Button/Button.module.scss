@@ -1,0 +1,145 @@
+.button {
+  @include reset-button;
+
+  padding: 10px 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  border-radius: 50px;
+
+  &.theme_default {
+    display: flex;
+    background-color: var(--color-dark-denim);
+    color: var(--color-white);
+    border: none;
+
+    &:active {
+      background-color: var(--color-day-flower);
+      color: var(--color-black);
+    }
+
+    &:hover {
+      background-color: var(--color-blue-splash);
+    }
+  }
+
+  &.theme_filter {
+    width: 240px;
+    height: 50px;
+    padding: 14px 20px;
+    display: flex;
+    background-color: var(--color-dark-denim);
+    color: var(--color-white);
+    border: none;
+
+    &:active {
+      background-color: var(--color-day-flower);
+      color: var(--color-black);
+    }
+
+    &:hover {
+      background-color: var(--color-blue-splash);
+    }
+  }
+
+  &.theme_outlined {
+    background-color: var(--color-white);
+    color: var(--color-dark-denim);
+
+    &:active {
+      background-color: var(--color-day-flower);
+      color: var(--color-black);
+    }
+
+    &:hover {
+      background-color: var(--color-ice-castle);
+      color: var(--color-dark-denim);
+    }
+  }
+
+  &.theme_text {
+    padding: 0;
+    color: var(--color-miami-marmalade);
+    background-color: transparent;
+    border: none;
+
+    &:active,
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+
+  &.theme_arrow {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 56px;
+    height: 56px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 48px;
+      height: 48px;
+      background-color: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s;
+    }
+
+    .arrow {
+      position: relative;
+      width: 25px;
+      height: 25px;
+      background-color: var(--color-miami-marmalade);
+      transition: 0.3s;
+    }
+
+    &:hover {
+      &:before {
+        width: 56px;
+        height: 56px;
+      }
+
+      .arrow {
+        background-color: var(--color-amurense);
+      }
+    }
+
+    &:active {
+      &:before {
+        width: 56px;
+        height: 56px;
+      }
+
+      .arrow {
+        background-color: var(--color-miami-marmalade);
+      }
+    }
+
+    &::after {
+      content: url(../../../public/images/icons/icon-vector-right.svg);
+      position: absolute;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #f6be3e;
+      font-size: 25px;
+    }
+  }
+
+  @include media($medium) {
+    & {
+      cursor: pointer;
+    }
+  }
+}

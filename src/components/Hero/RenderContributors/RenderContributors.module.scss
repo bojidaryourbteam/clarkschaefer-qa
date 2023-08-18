@@ -1,0 +1,35 @@
+.contributors_wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 125%;
+
+  .contributors {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &>div {
+      display: flex;
+      align-items: center;
+
+      img {
+        padding: 3px;
+        background-color: var(--color-white);
+      }
+    }
+
+    &>div>span {
+      margin-left: 7px;
+    }
+  }
+
+  &>span {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+}
