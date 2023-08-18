@@ -1,0 +1,8 @@
+Merge remote-tracking branch 'origin/feat/add-about-page-subnav' into Qa-branch
+
+# Conflicts:
+#	src/components/ContentBlock/ContentBlock.js
+#	src/components/SubNavBar/SubNavBar.js
+#	src/components/SubNavBar/SubNavBar.module.scss
+#	src/lib/fragments.js
+#	src/templates/Flexible.js
