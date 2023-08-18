@@ -1,0 +1,84 @@
+// Media mixin usage
+// ---------------------------------------------------------
+// Input
+// ---------------------------------------------------------
+// .background {
+//   @include media($medium) {
+//     background-color: green;
+//   }
+
+//   @include media($medium, down) {
+//     background-color: red;
+//   }
+
+//   @include media($medium, $large) {
+//     background-color: yellow;
+//   }
+// }
+
+// Output
+// ---------------------------------------------------------
+// @media only screen and (min-width: 1040px) {
+//   .background {
+//     background-color: green;
+//   }
+// }
+
+// @media only screen and (max-width: 1039px) {
+//   .background {
+//     background-color: red;
+//   }
+// }
+
+// @media only screen and (min-width: 1040px) and (max-width: 1439px) {
+//   .background {
+//     background-color: yellow;
+//   }
+// }
+
+// ---------------------------------------------------------
+
+$smallest: 480px;
+$small: 768px;
+$medium: 1080px;
+$large: 1440px;
+$largest: 1920px;
+
+// ---------------------------------------------------------
+
+$full-navigation: $medium;
+
+// ---------------------------------------------------------
+// prettier-ignore
+
+@mixin media($initial-width: false, $final-width: false) {
+  @if type-of($initial-width) != number {
+    @error '`#{$initial-width}` is not a valid value for $initial-width. `#{$examples}`';
+  }
+  @else if type-of($final-width) != number and $final-width != false and $final-width != down {
+    @error '`#{$final-width}` is not a valid value for $final-width. `#{$examples}`';
+  }
+  @else if $initial-width and $final-width == false {
+    @media only screen and (min-width: $initial-width) {
+      @content;
+    }
+  }
+  @else if $initial-width and $final-width == down {
+    @media only screen and (max-width: $initial-width - 1) {
+      @content;
+    }
+  }
+  @else if $initial-width and type-of($final-width) == number {
+    @media only screen and (min-width: $initial-width) and (max-width: $final-width - 1) {
+      @content;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+
+@mixin retina {
+  @media screen and (min-width: (min-resolution: 192dpi)) {
+    @content;
+  }
+}

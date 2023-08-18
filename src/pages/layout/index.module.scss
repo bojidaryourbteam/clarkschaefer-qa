@@ -1,0 +1,21 @@
+.preview_alert {
+  background: var(--color-off-white);
+  bottom: 0;
+  box-shadow: 0 0 3px var(--color-orange);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+
+  p {
+    display: none;
+  }
+
+  @include media($small) {
+    p {
+      display: flex;
+    }
+  }
+}
