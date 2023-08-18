@@ -1,0 +1,115 @@
+.our_firm_wrapper {
+  margin-top: 6px;
+
+  @include media($medium) {
+    padding-left: 160px;
+  }
+
+  &>span {
+    width: 78px;
+    position: relative;
+    left: 32px;
+    display: flex;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-weight: 800;
+    line-height: 19px;
+    text-align: right;
+    color: var(--color-miami-marmalade);
+
+    @include media($medium) {
+      left: 5px;
+      top: 6px;
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: "";
+      width: 5px;
+      height: 20px;
+      position: absolute;
+      left: -20px;
+      background: linear-gradient(180deg, var(--color-cyan-sky) 0%, var(--color-day-flower) 100%);
+      border-radius: 50px;
+      transform: rotate(-90deg);
+
+      @include media($medium) {
+        width: 10px;
+        height: 40px;
+        top: -9px;
+        left: -40px;
+      }
+    }
+  }
+
+  .our_firm {
+    margin-left: 22px;
+
+    @include media($medium) {
+      margin-left: 0;
+    }
+
+    &>h1 {
+      max-width: 536px;
+      display: none;
+      margin-top: 30px;
+      margin-bottom: 45px;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 115%;
+      color: var(--color-white);
+
+      @include media($medium) {
+        display: block;
+      }
+    }
+
+    &_list_one {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 75px;
+      margin-left: 10px;
+
+      @include media($large) {
+        margin: 0;
+        row-gap: 0;
+        column-gap: 50px;
+        grid-template-columns: repeat(4, 230px);
+      }
+    }
+
+    &_list_two {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @include media($large) {
+        margin: 0;
+        row-gap: 75px;
+        column-gap: 38px;
+        grid-template-columns: repeat(4, 244px);
+      }
+    }
+
+    &>h4 {
+      max-width: 320px;
+      width: 100%;
+      margin-top: 65px;
+      margin-bottom: 9px;
+      color: var(--color-white);
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+
+      @include media($medium) {
+        margin: 0;
+        max-width: 690px;
+        margin-top: 88px;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 115%;
+      }
+    }
+  }
+}
