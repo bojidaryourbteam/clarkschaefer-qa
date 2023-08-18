@@ -1,0 +1,286 @@
+.audio_player_wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(293deg, var(--color-cyan-sky) 0%, var(--color-day-flower) 100%);
+  z-index: 5;
+
+  .audio_player {
+    position: relative;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 28px;
+    margin-right: 28px;
+
+    @include media($medium) {
+      padding-left: 120px;
+      padding-right: 135px;
+      margin-right: 28px;
+    }
+
+    &_controls {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      @include media($medium) {
+        margin-bottom: 3px;
+      }
+
+      .play_btn,
+      .pause_btn {
+        @include reset-button;
+
+        width: 30px;
+        height: 30px;
+        display: block;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url('../../../public/images/icons/icons-audio-player-play.svg');
+
+        @include media($medium) {
+          width: 32px;
+          height: 32px;
+          margin-top: 5px;
+          margin-left: 16px;
+          margin-right: 16px;
+          padding-left: 13px;
+          padding-right: 13px;
+        }
+      }
+
+      .pause_btn {
+        background-image: url('../../../public/images/icons/icons-audio-player-pause.svg');
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%);
+      }
+
+      &>div {
+        max-width: 184px;
+        width: 100%;
+
+        @include media($medium) {
+          max-width: 277px;
+        }
+
+        &>div {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        // Styles for the input range
+        input[type="range"] {
+          /* Remove default track and thumb styles */
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+
+          /* Set dimensions and basic styles */
+          width: 100%;
+          height: 2px;
+          border-radius: 5px;
+          outline: none;
+
+          /* Customize track and thumb */
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+          }
+
+          &::-moz-range-thumb {
+            width: 6px;
+            height: 6px;
+            border: none;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+          }
+
+          /* Customize the track */
+          &::-webkit-slider-runnable-track {
+            border-radius: 5px;
+          }
+
+          &::-moz-range-track {
+            border-radius: 5px;
+          }
+
+          /* Customize the progress bar */
+          &::-webkit-progress-value {
+            background-color: #333;
+            border-radius: 5px;
+          }
+
+          &::-moz-range-progress {
+            background-color: #333;
+            border-radius: 5px;
+          }
+        }
+
+        &>div>span {
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 125%;
+        }
+      }
+
+      &>span {
+        @include media($medium) {
+          margin-top: 3px;
+        }
+      }
+    }
+
+    &_text,
+    span {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 105%;
+
+      @include media($medium) {
+        font-size: 16px;
+      }
+    }
+
+    &_text {
+      max-width: 464px;
+      width: 100%;
+      display: none;
+      padding-left: 18px;
+      padding-right: 18px;
+
+      @include media($medium) {
+        display: block;
+      }
+    }
+
+    .arrow_menu {
+      @include reset-button;
+
+      &>div {
+        width: 20px;
+        height: 30px;
+        margin-left: 10px;
+
+        svg {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+
+      @include media($medium) {
+        display: none;
+      }
+    }
+
+    .socials_menu {
+      display: none;
+      align-items: center;
+      margin-left: 18px;
+
+      @include media($medium) {
+        display: flex;
+      }
+
+      &>div {
+        display: flex;
+        align-items: center;
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%);
+
+        .socials_icon {
+          margin-left: 20px;
+          height: 24px;
+          width: 24px;
+
+          svg {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+      }
+    }
+  }
+
+  .socials_menu_m {
+    @include reset-list;
+
+    width: 100%;
+    height: 225px;
+    position: absolute;
+    top: calc(100% - 4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--color-white);
+    z-index: 1;
+
+    &>li {
+      width: 100%;
+      height: 100%;
+
+      &>button {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        background: rgba(56, 164, 221, 0.10);
+      }
+
+
+      &:nth-of-type(1) {
+        .socials_icon {
+          filter: invert(29%) sepia(93%) saturate(1058%) hue-rotate(173deg) brightness(95%) contrast(103%);
+        }
+      }
+
+      &:nth-of-type(2) {
+        .socials_icon {
+          filter: invert(50%) sepia(41%) saturate(3861%) hue-rotate(165deg) brightness(101%) contrast(101%);
+        }
+      }
+
+      &:nth-of-type(3) {
+        .socials_icon {
+          filter: invert(31%) sepia(27%) saturate(1239%) hue-rotate(182deg) brightness(97%) contrast(89%);
+        }
+      }
+
+      .socials_icon {
+        width: 35px;
+        height: 35px;
+
+        svg {
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+    }
+  }
+
+  .process_bar_wrapper {
+    width: 100%;
+    background-color: var(--color-subnautical);
+
+    .process_bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-miami-marmalade) 0%, var(--color-amurense) 100%);
+    }
+  }
+}
