@@ -15,7 +15,7 @@ const LightBackGroundTheme = (props) => {
       <div className={light_background_item_img}>
         <Image
           alt="item_image"
-          src={image.url}
+          src={image?.url}
           quality={100}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
