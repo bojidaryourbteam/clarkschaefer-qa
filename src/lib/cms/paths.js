@@ -7,7 +7,7 @@ import GQL from './gql'
 export async function getPagePaths(
   collection = 'pageFlexible',
 
-  excludeSlugs = ['home', 'services', 'insights']
+  excludeSlugs = ['home', 'services', 'insights', 'experts']
 ) {
   const data = await GQL.fetch(
     `query ($slugs: [String]) {
