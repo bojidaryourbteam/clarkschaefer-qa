@@ -26,7 +26,7 @@
   &.theme_filter {
     width: 240px;
     height: 50px;
-    padding: 14px 20px;
+    padding: 17px 14px;
     display: flex;
     background-color: var(--color-dark-denim);
     color: var(--color-white);
@@ -39,6 +39,22 @@
 
     &:hover {
       background-color: var(--color-blue-splash);
+    }
+
+    @include media($medium, down) {
+      width: 315px;
+      padding: 14px 50px;
+      background-color: var(--color-white);
+      color: var(--color-dark-denim);
+
+      &:active {
+        background-color: var(--color-white);
+        color: var(--color-black);
+      }
+
+      &:hover {
+        background-color: var(--color-white);
+      }
     }
   }
 

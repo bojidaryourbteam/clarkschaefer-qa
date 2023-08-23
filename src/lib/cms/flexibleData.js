@@ -1,7 +1,13 @@
-import { ROW_ATTRIBUTES, CARD_ATTRIBUTES, CONTACT_ATTRIBUTES, SNIPPET_ATTRIBUTES } from '../fragments'
-import { capitalize } from '../utils'
-import GQL from './gql'
-const MODULES_COUNT = 50
+import {
+  ROW_ATTRIBUTES,
+  CARD_ATTRIBUTES,
+  CONTACT_ATTRIBUTES,
+  SNIPPET_ATTRIBUTES,
+  CONTENT_BLOCK_ATTRIBUTES,
+} from '../fragments';
+import { capitalize } from '../utils';
+import GQL from './gql';
+const MODULES_COUNT = 50;
 
 /**
  * @class FlexibleData
@@ -28,7 +34,7 @@ export default class FlexibleData {
    * @returns Contentful Data for a specific page, based on the slug
    */
   static async fetch({ slug, preview = false, collection = 'pageFlexible' }) {
-    const queryVars = { slug, preview }
+    const queryVars = { slug, preview };
     let query = `
       query GetFlexPageData($slug: String!, $preview: Boolean!) {
         navigationCollection {
@@ -103,7 +109,7 @@ export default class FlexibleData {
             }
           }
         }
-      }`
+      }`;
 
     if (collection === 'pageInsight') {
       query = `
@@ -157,7 +163,7 @@ export default class FlexibleData {
             }
           }
         }
-      }`
+      }`;
     }
 
     if (collection === 'pageService') {
@@ -212,7 +218,7 @@ export default class FlexibleData {
             }
           }
         }
-      }`
+      }`;
     }
 
     if (collection === 'pageInsight') {
@@ -252,7 +258,7 @@ export default class FlexibleData {
             }
           }
         }
-      }`
+      }`;
     }
 
     if (collection === 'pageExpert') {
@@ -279,23 +285,24 @@ export default class FlexibleData {
             }
           }
         }
-      }`
+      }`;
     }
 
-    const data = await GQL.fetch(query, queryVars, preview)
+    const data = await GQL.fetch(query, queryVars, preview);
     if (data.errors) {
-      const isUnresolvable = data.errors[0]?.extensions?.contentful?.code === 'UNRESOLVABLE_LINK'
+      const isUnresolvable =
+        data.errors[0]?.extensions?.contentful?.code === 'UNRESOLVABLE_LINK';
       if (isUnresolvable) {
-        console.error(`Error fetching page data: ${data.errors[0].message}`)
+        console.error(`Error fetching page data: ${data.errors[0].message}`);
       } else {
-        throw new Error(`Error fetching page data: ${data.errors[0].message}`)
+        throw new Error(`Error fetching page data: ${data.errors[0].message}`);
       }
     }
 
-    const entry = await FlexibleData.extractSingleEntry(data, preview)
-    const navigation = data?.data?.navigationCollection?.items
+    const entry = await FlexibleData.extractSingleEntry(data, preview);
+    const navigation = data?.data?.navigationCollection?.items;
 
-    return { entry, navigation }
+    return { entry, navigation };
   }
 
   /**
@@ -305,9 +312,9 @@ export default class FlexibleData {
    * @returns
    */
   static async extractSingleEntry(res, preview = false) {
-    const entries = res?.data?.collection?.items
-    const result = await this.getFlexPageModules(entries, preview)
-    return result[0]
+    const entries = res?.data?.collection?.items;
+    const result = await this.getFlexPageModules(entries, preview);
+    return result[0];
   }
 
   /**
@@ -318,24 +325,31 @@ export default class FlexibleData {
    * @param {Boolean} preview - optional, hits preview API if true
    * @returns {Array} array of objects containing resolved entries
    */
-  static async getResolvedEntries(unresolvedIds = [], preview = false, resolvedIds = []) {
-    if (!unresolvedIds?.length) return []
-    const resolvedEntries = []
+  static async getResolvedEntries(
+    unresolvedIds = [],
+    preview = false,
+    resolvedIds = []
+  ) {
+    if (!unresolvedIds?.length) return [];
+    const resolvedEntries = [];
 
     for (let skip = 0; skip <= unresolvedIds.length; skip += MODULES_COUNT) {
       const queryVars = {
-        ids: unresolvedIds.filter(id => !resolvedIds.includes(id)), // Filter out already resolved IDs
+        ids: unresolvedIds.filter((id) => !resolvedIds.includes(id)), // Filter out already resolved IDs
         skip,
         limit: MODULES_COUNT,
-        preview
-      }
+        preview,
+      };
       const query = `
         ${ROW_ATTRIBUTES}
         ${CARD_ATTRIBUTES}
         ${CONTACT_ATTRIBUTES}
         ${SNIPPET_ATTRIBUTES}
+        ${CONTENT_BLOCK_ATTRIBUTES}
         query GetFlexPageModules($ids: [String!], $skip: Int, $limit: Int) {
-          entryCollection(where: { sys: { id_in: $ids } }, preview: ${preview ? 'true' : 'false'}, skip: $skip, limit: $limit) {
+          entryCollection(where: { sys: { id_in: $ids } }, preview: ${
+            preview ? 'true' : 'false'
+          }, skip: $skip, limit: $limit) {
             items {
               sys {
                 id
@@ -345,28 +359,34 @@ export default class FlexibleData {
               ...Card
               ...Contact
               ...Snippet
+              ...ContentBlock
             }
           }
-        }`
+        }`;
 
-      const data = await GQL.fetch(query, queryVars, preview)
+      const data = await GQL.fetch(query, queryVars, preview);
       if (data.errors) {
-        const isUnresolvable = data.errors[0]?.extensions?.contentful?.code === 'UNRESOLVABLE_LINK'
+        const isUnresolvable =
+          data.errors[0]?.extensions?.contentful?.code === 'UNRESOLVABLE_LINK';
         if (isUnresolvable) {
-          console.error(`Error Resolving Flex Modules: ${data.errors[0].message}`)
+          console.error(
+            `Error Resolving Flex Modules: ${data.errors[0].message}`
+          );
         } else {
-          throw new Error(`Error Resolving Flex Modules: ${data.errors[0].message}`)
+          throw new Error(
+            `Error Resolving Flex Modules: ${data.errors[0].message}`
+          );
         }
       }
-      const items = data.data.entryCollection.items
+      const items = data.data.entryCollection.items;
 
-      const ids = items.map(item => item.sys.id)
-      resolvedIds.push(...ids)
+      const ids = items.map((item) => item.sys.id);
+      resolvedIds.push(...ids);
 
-      resolvedEntries.push(...items)
+      resolvedEntries.push(...items);
     }
 
-    return resolvedEntries
+    return resolvedEntries;
   }
 
   /**
@@ -381,35 +401,56 @@ export default class FlexibleData {
    * @param {Boolean} preview - optional, hits preview API if true
    * @returns {Array} array of objects containing recursively resolved entries
    */
-  static async getFlexPageModules(entries = [], preview = false, resolvedIds = []) {
-    const accumulatedUnresolvedIds = []
+  static async getFlexPageModules(
+    entries = [],
+    preview = false,
+    resolvedIds = []
+  ) {
+    const accumulatedUnresolvedIds = [];
 
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (Object.keys(entry).includes('blocksCollection')) {
-        const entries = entry.blocksCollection?.items ?? []
+        const entries = entry.blocksCollection?.items ?? [];
         const ids = entries
-          .filter(entry => entry?.unresolved?.id && !resolvedIds.includes(entry.unresolved?.id)) // Filter out already resolved IDs
-          .map(entry => entry.unresolved?.id)
+          .filter(
+            (entry) =>
+              entry?.unresolved?.id &&
+              !resolvedIds.includes(entry.unresolved?.id)
+          ) // Filter out already resolved IDs
+          .map((entry) => entry.unresolved?.id);
 
-        accumulatedUnresolvedIds.push(...ids)
+        accumulatedUnresolvedIds.push(...ids);
       }
-    })
+    });
 
     if (accumulatedUnresolvedIds.length > 0) {
-      const resolvedEntries = await this.getResolvedEntries(accumulatedUnresolvedIds, preview, resolvedIds)
-      resolvedIds.push(...resolvedEntries.map(item => item.sys.id))
+      const resolvedEntries = await this.getResolvedEntries(
+        accumulatedUnresolvedIds,
+        preview,
+        resolvedIds
+      );
+      resolvedIds.push(...resolvedEntries.map((item) => item.sys.id));
 
-      const recurEntries = await this.getFlexPageModules(resolvedEntries, preview, resolvedIds)
+      const recurEntries = await this.getFlexPageModules(
+        resolvedEntries,
+        preview,
+        resolvedIds
+      );
 
       // Reconciliation phase - match resolved entries to their unresolved counterparts by ID
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry?.blocksCollection?.items) {
-          entry.blocksCollection.items = entry.blocksCollection.items.map(item => {
-            return recurEntries.find(el => el.sys.id === item?.unresolved?.id) || item
-          })
+          entry.blocksCollection.items = entry.blocksCollection.items.map(
+            (item) => {
+              return (
+                recurEntries.find((el) => el.sys.id === item?.unresolved?.id) ||
+                item
+              );
+            }
+          );
         }
-      })
+      });
     }
-    return entries
+    return entries;
   }
 }

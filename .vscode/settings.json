@@ -1,0 +1,30 @@
+{
+  "AllAutocomplete.wordListFiles": [
+    "src/layout/debug-media-queries/styles.module.scss",
+    "src/styles/global/variables/_color.scss",
+    "src/styles/global/variables/_font.scss",
+    "src/styles/global/variables/_global.scss",
+    "src/styles/global/variables/_z-index.scss"
+  ],
+  "css.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "prettier.singleQuote": true,
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.svg": "html"
+  },
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "scss.validate": false,
+  "stylelint.stylelintPath": "node_modules/stylelint",
+  "stylelint.validate": ["css", "scss"],
+  "stylelint.snippet": ["css", "scss"]
+}

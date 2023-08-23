@@ -1,5 +1,10 @@
 export const ROW_ATTRIBUTES = `
   fragment Row on Row {
+    marginTop
+    columnCount
+    heading
+    subheading
+    label
     blocksCollection (limit: 16) {
       items {
         __typename
@@ -12,6 +17,16 @@ export const ROW_ATTRIBUTES = `
     }
   }
 `
+
+export const CONTENT_BLOCK_ATTRIBUTES = `
+  fragment ContentBlock on ContentBlock {
+    __typename
+    internalTitle
+    content {
+      json
+    }
+  }
+`;
 
 export const CARD_ATTRIBUTES = `
   fragment Card on Card {

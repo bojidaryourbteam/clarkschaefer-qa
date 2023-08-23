@@ -1,49 +1,49 @@
-import { RenderBlocks } from '@lib/flexibleUtils'
-import Layout from '@src/layout'
-import Hero from '@components/Hero'
-import AudioPlayer from '@components/AudioPlayer'
-import SubNavBar from '@components/SubNavBar'
+import { RenderBlocks } from '@lib/flexibleUtils';
+import Layout from '@src/layout';
+import Hero from '@components/Hero';
+import AudioPlayer from '@components/AudioPlayer';
+import SubNavBar from '@components/SubNavBar';
 
 // ---------------------------------------------------------
 
-const FlexibleTemplate = props => {
-  console.log(props)
+const FlexibleTemplate = (props) => {
+  console.log(props);
   const {
     data: { entry: data, navigation },
     children,
-    preview
-  } = props
-  const getHero = dataIn => {
-    const pageType = dataIn.pageType
-    let theme = 'homepage'
+    preview,
+  } = props;
+  const getHero = (dataIn) => {
+    const pageType = dataIn.pageType;
+    let theme = 'homepage';
 
     switch (pageType) {
       case 'Homepage':
-        theme = 'homepage'
-        break
+        theme = 'homepage';
+        break;
       case 'Services Landing':
-        theme = 'services_landing'
-        break
+        theme = 'services_landing';
+        break;
       case 'Services Detail':
-        theme = 'services_detail'
-        break
+        theme = 'services_detail';
+        break;
       case 'Insights Landing':
-        theme = 'insights_landing'
-        break
+        theme = 'insights_landing';
+        break;
       case 'Insights Detail':
-        theme = 'insights_detail'
-        break
-      case 'About':
-        theme = 'aboutpage'
-        break
+        theme = 'insights_detail';
+        break;
+      case 'About Page':
+        theme = 'about_landing';
+        break;
       default:
-        break
+        break;
     }
-    return <Hero {...{ ...dataIn, theme }} />
-  }
+    return <Hero {...{ ...dataIn, theme }} />;
+  };
 
-  const audio = props.data.entry.audio
-  const subnav = props.data.entry.subNavigation
+  const audio = props.data.entry.audio;
+  const subnav = props.data.entry.subNavigation;
 
   return (
     <Layout
@@ -51,7 +51,7 @@ const FlexibleTemplate = props => {
       navigation={navigation}
       meta={{
         description: data?.metaDescription,
-        title: data?.metaTitle
+        title: data?.metaTitle,
       }}
     >
       {audio && <AudioPlayer url={audio.url} />}
@@ -60,7 +60,7 @@ const FlexibleTemplate = props => {
       {data?.blocksCollection && RenderBlocks(data.blocksCollection.items)}
       {children}
     </Layout>
-  )
-}
+  );
+};
 
-export default FlexibleTemplate
+export default FlexibleTemplate;

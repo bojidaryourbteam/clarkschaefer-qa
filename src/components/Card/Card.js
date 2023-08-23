@@ -10,17 +10,17 @@ const Card = (props) => {
   const { theme } = props;
   const cardLightTheme = 'light_background_theme';
 
-  if(theme === 'oval_theme') return <OvalTheme {...props} />;
-  if (theme === 'round_theme') return <RoundTheme {...props} />;
+  if (theme === 'oval_theme') return <OvalTheme {...props} />;
+  if (theme === 'Round Image') return <RoundTheme {...props} />;
   if (theme === 'box_theme') return <BoxTheme {...props} />;
-  if (theme === 'text_only_large_heading') return <TextOnlyLargeHeading {...props} />;
-  if (theme === 'text_only') return <TextOnly {...props} />;
+  if (theme === 'text_only_large_heading')
+    return <TextOnlyLargeHeading {...props} />;
+  if (theme === 'Text Only') return <TextOnly {...props} />;
   if (
     theme === 'light_background_theme' ||
     cardLightTheme === 'light_background_theme'
   )
     return <LightBackGroundTheme {...props} />;
-
 
   return null;
 };

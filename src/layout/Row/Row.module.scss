@@ -1,27 +1,136 @@
 .row_container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  grid-column-start: auto;
-  margin-top: 10px;
+  position: relative;
+  width: 100%;
 
   @include media($medium) {
-    grid-template-columns: repeat(2, max-content);
-    gap: 40px;
-    margin-top: 70px;
+    padding-left: 160px;
+  }
+
+  &>span {
+    position: relative;
+    left: 32px;
+    top: -24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-weight: 800;
+    line-height: 19px;
+    text-align: right;
+    color: var(--color-miami-marmalade);
+
+    @include media($medium) {
+      top: -2px;
+      left: 5px;
+    }
+
+    &::before {
+      content: "";
+      width: 5px;
+      height: 20px;
+      position: absolute;
+      left: -20px;
+      background: linear-gradient(180deg, var(--color-cyan-sky) 0%, var(--color-day-flower) 100%);
+      border-radius: 50px;
+      transform: rotate(-90deg);
+
+      @include media($medium) {
+        width: 10px;
+        height: 40px;
+        top: -9px;
+        left: -40px;
+      }
+    }
+  }
+
+  &>h1 {
+    max-width: 536px;
+    display: none;
+    margin-top: 24px;
+    margin-bottom: 45px;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 115%;
+    color: var(--color-white);
+
+    @include media($medium) {
+      display: block;
+    }
+  }
+
+  &>h2 {
+    max-width: 320px;
+    width: 100%;
+    margin-top: 65px;
+    margin-bottom: 9px;
+    color: var(--color-white);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media($medium) {
+      margin: 0;
+      max-width: 690px;
+      //margin-top: 88px;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 115%;
+    }
   }
 }
 
+.column_classes {
+  display: grid;
 
-.text_only_large_heading {
-  padding-left: 120px;
-  display: flex;
-  gap: 138px;
-  flex-direction: row;
+  grid-auto-rows: auto;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  max-width: $medium;
+  margin-left: 22px;
+  margin-right: 22px;
 
-  @include media($medium,down) {
-    padding-left: 30px;
-    flex-direction: column;
-    gap: 20px;
+  @include media($small) {
+    margin-left: 0;
+    margin-right: 0;
   }
+}
+
+.columns_one {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.columns_two {
+  align-items: center;
+
+  @include media($small) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px;
+  }
+}
+
+.columns_four {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 39px;
+
+  @include media($small) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.margin_top_none {
+  margin-top: 0;
+}
+
+.margin_top_small {
+  margin-top: 40px;
+}
+
+.margin_top_medium {
+  margin-top: 70px;
+}
+
+.margin_top_large {
+  margin-top: 100px;
 }

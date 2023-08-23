@@ -5,6 +5,7 @@ import GenericComponent from './GenericComponent';
 import Row from './../../layout/Row/Row';
 import Snippet from '../Snippet';
 import Card from '../Card/Card';
+import ContentBlock from './../ContentBlock/index';
 
 // TODO map the components in the following object...
 const ComponentMap = {
@@ -12,6 +13,7 @@ const ComponentMap = {
   Card,
   Snippet,
   Row,
+  ContentBlock,
 };
 const Block = (props) => {
   // If no data was passed, render nothing.
