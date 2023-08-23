@@ -1,6 +1,4 @@
 .our_firm_wrapper {
-  margin-top: 6px;
-
   @include media($medium) {
     padding-left: 160px;
   }
@@ -19,9 +17,8 @@
     color: var(--color-miami-marmalade);
 
     @include media($medium) {
+      top: -2px;
       left: 5px;
-      top: 6px;
-      margin-bottom: 0;
     }
 
     &::before {
@@ -53,7 +50,7 @@
     &>h1 {
       max-width: 536px;
       display: none;
-      margin-top: 30px;
+      margin-top: 24px;
       margin-bottom: 45px;
       font-size: 48px;
       font-weight: 300;

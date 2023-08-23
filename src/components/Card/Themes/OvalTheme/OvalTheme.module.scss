@@ -27,6 +27,7 @@
       height: 339px;
     }
     @include media($small, down) {
+      margin-right: 0px;
       margin-top: 0px;
       width: 137px;
       height: 190px;

@@ -54,6 +54,11 @@ const ExpertsGrid = ({ referencesCollection, internalTitle }) => {
         (expert.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || expert.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
   )
 
+  const myStyle = {
+    marginRight: '12px',
+    marginLeft: '12px'
+  }
+
   return (
     <section>
       <div className={container_filters}>
@@ -70,7 +75,7 @@ const ExpertsGrid = ({ referencesCollection, internalTitle }) => {
             label={
               <>
                 Filter by Solution
-                <Image className={filter_img} src='/images/icons/icon-filter-vector.svg' alt='Image description' width={20} height={20} />
+                <Image className={filter_img} src='/images/icons/icon-filter-vector.svg' alt='Image description' width={20} height={20} style={myStyle} />
                 {filterCount > 0 && <span>{filterCount}</span>}
               </>
             }

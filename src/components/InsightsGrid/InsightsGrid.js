@@ -12,7 +12,7 @@ const InsightsGrid = ({ config, referencesCollection }) => {
 
   const heading = config.heading
   console.log(referencesCollection)
-  const filterOptions = ['all', ...Array.from(new Set(referencesCollection.items.flatMap(item => item.category)))]
+  const filterOptions = ['all', ...Array.from(new Set(referencesCollection?.items.flatMap(item => item.category)))]
 
   // const filterOptions = Array.from(new Set(referencesCollection.items.flatMap(item => item.servicesCollection.items.map(service => service.heroHeading))))
 
@@ -45,7 +45,7 @@ const InsightsGrid = ({ config, referencesCollection }) => {
       <div className={insights_grid__container}>
         <div className={upper_cards}>
           {filteredData.slice(0, 2).map(item => (
-            <SmallBoxTheme key={item.slug} {...item} />
+            <SmallBoxTheme key={item.slug} {...item} style_big={{ maxWidth: '395px', maxHeight: '300px' }} style={{ maxWidth: '350px' }} />
           ))}
         </div>
 

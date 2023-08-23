@@ -23,7 +23,7 @@ const LightBackGroundTheme = (props) => {
       </div>
       <h1>{heading}</h1>
       <p>{subheading}</p>
-      <Link href={url}>Explore</Link>
+      {url && <Link href={url}>Explore</Link>}
     </div>
   );
 };

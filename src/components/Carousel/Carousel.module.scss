@@ -195,11 +195,8 @@
     top: 17%;
 
     &::after {
-      content: url(/_next/static/media/icons-arrow-right.ee027594.svg);
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      top: -50%;
+      content: url('/images/icons/icons-arrow-right-default.svg');
+      margin-left: 6px;
       transform: translate(50%, 57%);
       filter: brightness(0) saturate(100%) invert(100%) sepia(0%);
     }

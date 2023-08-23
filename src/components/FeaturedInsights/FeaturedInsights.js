@@ -18,7 +18,7 @@ const FeaturedInsights = ({ referencesCollection }) => {
         <Card {...squareItem} theme="box_theme" />
         <div className={featured_insights_collection}>
           {roundItems.map((entry) => (
-            <Card key={entry.slug} {...entry} theme="round_theme" />
+            <Card key={entry.slug} {...entry} theme="Round Image" />
           ))}
         </div>
       </div>

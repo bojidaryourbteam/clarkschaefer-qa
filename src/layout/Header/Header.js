@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,7 +10,6 @@ const Header = ({ navigation = [] }) => {
   const [collapse, setCollapse] = useState(false)
   const [toggleIcon, setToggleIcon] = useState(false)
   const [dropdownVisible, setDropdownVisible] = useState({})
-  const [dropdownHover, setDropdownHover] = useState(false)
 
   const router = useRouter()
   const currentPath = router.pathname
@@ -39,14 +37,12 @@ const Header = ({ navigation = [] }) => {
         ...dropdownVisible,
         [index]: true
       })
-      setDropdownHover(true)
     }
   }
 
   const handleMouseLeave = () => {
     if (window.innerWidth > 768) {
       setDropdownVisible({})
-      setDropdownHover(false)
     }
   }
 
