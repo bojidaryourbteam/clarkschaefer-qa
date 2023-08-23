@@ -248,7 +248,8 @@ $decorationHeight: 132px;
     }
   }
 
-  &.theme_right {
+  &.theme_right,
+  &.theme_about_landing {
     .hero {
       &_content {
         order: 0;
@@ -508,5 +509,9 @@ $decorationHeight: 132px;
         order: 0;
       }
     }
+  }
+
+  &.theme_about_landing {
+    margin-bottom: 70px;
   }
 }

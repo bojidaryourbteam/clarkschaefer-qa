@@ -9,14 +9,14 @@ import { container, container_filters, button__see_more, grid__wrapper, grid__co
 
 const ExpertsGrid = ({ referencesCollection, internalTitle }) => {
   console.log(internalTitle)
-  const experts = referencesCollection.items
+  const experts = referencesCollection?.items
   const [selectedServices, setSelectedServices] = useState([])
   const [showCount, setShowCount] = useState(4)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterCount, setFilterCount] = useState(0)
   const [showSolutions, setShowSolutions] = useState(false)
 
-  const services = Array.from(new Set(experts.flatMap(expert => expert.servicesCollection.items.map(item => item.heroHeading))))
+  const services = Array.from(new Set(experts.flatMap(expert => expert.servicesCollection.items?.map(item => item.heroHeading))))
 
   const handleServiceChange = event => {
     const service = event.target.name
@@ -49,7 +49,7 @@ const ExpertsGrid = ({ referencesCollection, internalTitle }) => {
     selectedServices.length === 0
       ? // filters by first and last name
         expert.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || expert.lastName.toLowerCase().includes(searchTerm.toLowerCase())
-      : expert.servicesCollection.items.some(item => selectedServices.includes(item.heroHeading)) &&
+      : expert.servicesCollection?.items.some(item => selectedServices.includes(item.heroHeading)) &&
         // filters by first and last name
         (expert.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || expert.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
   )
@@ -105,7 +105,7 @@ const ExpertsGrid = ({ referencesCollection, internalTitle }) => {
             {filteredExperts.length > 0 ? (
               filteredExperts.slice(0, showCount).map((expert, index) => (
                 <div className={grid__item} key={index}>
-                  <OvalTheme image={{ url: expert.image.url }} heading={`${expert.firstName} ${expert.lastName}`} subheading={expert.jobTitle} services={expert.servicesCollection.items.map(item => item.heroHeading)} phone={expert.phone} jobTitle={expert.jobTitle} email={expert.email} linkedIn={expert.linkedinUrl} />
+                  <OvalTheme image={{ url: expert.image?.url }} heading={`${expert.firstName} ${expert.lastName}`} subheading={expert.jobTitle} services={expert.servicesCollection?.items.map(item => item.heroHeading)} phone={expert.phone} jobTitle={expert.jobTitle} email={expert.email} linkedIn={expert.linkedinUrl} />
                 </div>
               ))
             ) : (

@@ -7,14 +7,15 @@ import classNames from 'classnames'
 import ShuffleTwoTheme from './Themes/ShuffleTwoTheme'
 import RenderContributors from './RenderContributors/RenderContributors'
 
-import { hero, hero_content, hero_content_border, hero_textbox, hero_wrapper, play_btn, decoration, reading_time, button_wrapper, theme_left, theme_left_small, theme_right } from './Hero.module.scss'
+import { hero, hero_content, hero_content_border, hero_textbox, hero_wrapper, play_btn, decoration, reading_time, button_wrapper, theme_left, theme_left_small, theme_right, theme_about_landing } from './Hero.module.scss'
 
 const themeOptions = {
   homepage: theme_right,
   aboutpage: theme_right,
   services_landing: theme_left,
   services_detail: theme_right,
-  insights_detail: theme_left_small
+  insights_detail: theme_left_small,
+  about_landing: theme_about_landing
 }
 
 const Hero = ({ heroHeading, heroSubheading, heroImage, heroVideo, heroCtasCollection, heroInsightsLandingCollection, blocksCollection, authorsCollection, theme, readingTime, publishedAt }) => {
@@ -72,7 +73,7 @@ const Hero = ({ heroHeading, heroSubheading, heroImage, heroVideo, heroCtasColle
     <>
       <video ref={videoRef} onClick={togglePlay} onTimeUpdate={handleTimeUpdate} onLoadedData={handleLoadedData}>
         <track kind='captions' label='English' />
-        <source src={heroVideo.url} type='video/mp4' />
+        <source src={heroVideo?.url} type='video/mp4' />
       </video>
       {!isVideoPlaying && <button onClick={togglePlay} className={play_btn}></button>}
     </>
@@ -80,7 +81,7 @@ const Hero = ({ heroHeading, heroSubheading, heroImage, heroVideo, heroCtasColle
     <Image alt='hero' src={heroImage?.url} priority quality={100} fill />
   )
 
-  const heroButtons = heroCtasCollection.items.slice(heroCtasCollection.items.length - 2) || []
+  const heroButtons = heroCtasCollection?.items.slice(heroCtasCollection?.items.length - 2) || []
 
   const classes = classNames(hero_wrapper, [themeOptions[theme]])
 
@@ -98,14 +99,14 @@ const Hero = ({ heroHeading, heroSubheading, heroImage, heroVideo, heroCtasColle
             <div className={hero_textbox}>
               <h1>{heroHeading}</h1>
               <div>
-                {isInsightsDetailTheme && authorsCollection?.items.length && (
+                {isInsightsDetailTheme && authorsCollection?.items?.length && (
                   <>
                     <div className={reading_time}>
                       <span>{formatDate(publishedAt)}</span>
                       <span>{readingTime}</span>
                     </div>
                     <div>
-                      <RenderContributors collection={authorsCollection.items} />
+                      <RenderContributors collection={authorsCollection?.items} />
                     </div>
                   </>
                 )}
